@@ -104,7 +104,7 @@ export default Calculadora;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
+    padding: 60,
     justifyContent: 'center',
     backgroundColor: '#f0f0f0',
   },
