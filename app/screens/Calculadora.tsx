@@ -9,11 +9,11 @@ interface Calcular {
 }
 
 const Calculadora = () => {
-  const [consumo, setBillAmount] = useState<string>('');
-  const [tipoPorcentaje, setTipPercentage] = useState<number>(10);
-  const [PorcentajePerso, setCustomTipPercentage] = useState<string>('');
-  const [tipoMonto, setTipAmount] = useState<number>(0);
-  const [totalMonto, setTotalAmount] = useState<number>(0);
+  const [consumo, setConsumo] = useState<string>('');
+  const [tipoPorcentaje, setipoPorcentaje] = useState<number>(10);
+  const [PorcentajePerso, setPorcentajePerso] = useState<string>('');
+  const [tipoMonto, setTipoMonto] = useState<number>(0);
+  const [totalMonto, setTotalMonto] = useState<number>(0);
   const [history, setHistory] = useState<Calcular[]>([]);
 
   const calcularTip = () => {
@@ -28,8 +28,8 @@ const Calculadora = () => {
     let tip = monto * (porcentaje / 100);
     const total = monto + tip;
 
-    setTipAmount(parseFloat(tip.toFixed(2)));
-    setTotalAmount(parseFloat(total.toFixed(2)));
+    setTipoMonto(parseFloat(tip.toFixed(2)));
+    setTotalMonto(parseFloat(total.toFixed(2)));
 
     setHistory([{ 
         consumo: monto, 
@@ -49,14 +49,14 @@ const Calculadora = () => {
         placeholder="Monto del consumo"
         keyboardType="numeric"
         value={consumo}
-        onChangeText={setBillAmount}
+        onChangeText={setConsumo}
       />
 
       {                            }
       <Text style={styles.label}>Selecciona un porcentaje:</Text>
       <View style={styles.buttonGroup}>
         {[10, 15, 20].map((tip) => (
-          <TouchableOpacity key={tip} style={styles.button} onPress={() => setTipPercentage(tip)}>
+          <TouchableOpacity key={tip} style={styles.button} onPress={() => setipoPorcentaje(tip)}>
             <Text style={styles.buttonText}>{tip}%</Text>
           </TouchableOpacity>
         ))}
@@ -68,7 +68,7 @@ const Calculadora = () => {
         placeholder="Porcentaje personalizado"
         keyboardType="numeric"
         value={PorcentajePerso}
-        onChangeText={setCustomTipPercentage}
+        onChangeText={setPorcentajePerso}
       />
 
       {                                     }
