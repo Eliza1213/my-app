@@ -2,7 +2,7 @@ import { Alert, Button, StyleSheet, Text, TextInput, View } from "react-native";
 import Boton from "../Componetes/Boton";
 import AntDesign from '@expo/vector-icons/AntDesign';
 
-export default function Login(){
+export default function Podai(){
     return(
         <View style={estilos.container}>
             <Text style={estilos.titulo} >PODAI</Text>
