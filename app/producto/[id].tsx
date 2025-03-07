@@ -1,10 +1,11 @@
-import { ActivityIndicator, StyleSheet, Text, View } from 'react-native'
+import { ActivityIndicator, Button, StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
-import Boton from '../Componetes/Boton'
+import Boton from '../../app_old/Componetes/Boton'
+import { Link, useLocalSearchParams } from 'expo-router'
 
 
-const Tienda = () => {
-
+const producto = () => {
+    const {id}=useLocalSearchParams();
     
     type prod={
         id:number,
@@ -25,7 +26,7 @@ const Tienda = () => {
     const loadData= async()=>{
         setLoading(true);
         try{
-            const respuesta=await fetch('https://fakestoreapi.com/products/1');
+            const respuesta=await fetch('https://fakestoreapi.com/products/'+id);
             if(!respuesta.ok){
                 console.log('error1');
                 throw new Error('Ocurrio el error : ${respuesta.status}');
@@ -46,6 +47,9 @@ const Tienda = () => {
                 <Text>Tienda</Text>
                 <Text>Producto : {producto?.title}</Text>
                 <Text>descripcion : {producto?.description}</Text>
+                <Link href={"../index"}>
+                    go back...
+                </Link>
             </View>
         )
     
@@ -68,6 +72,6 @@ const Tienda = () => {
   )
 }
 
-export default Tienda
+export default producto
 
 const styles = StyleSheet.create({})

@@ -1,19 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
 import { ActivityIndicator, StyleSheet, Text, TextInput, View } from 'react-native';
-import Header from './app/Componetes/Header';
-import Foother from './app/Componetes/Foother';
-import Calculadora from './app/screens';
+import Login from './app_old/screens/Login';
+import Header from './app_old/Componetes/Header';
+import Foother from './app_old/Componetes/Foother';
+import Calculadora from './app_old/screens';
 
 export default function App() {
   return (
     <View style={styles.container}>
       <Header titulo='Calculadora' 
-      nombre='Elizabeth Cervantes' 
+      nombre='ELIZABETH FLORES CERVANTES' 
       imagen={require('./assets/guero.png')}/>
 
       <Calculadora/>
       
-      <Foother fecha='2025-02-19' telefono='614-123-4567'/>
+      <Foother fecha='2025-02-07' telefono='614-123-4567'/>
     </View>
   );
 }
