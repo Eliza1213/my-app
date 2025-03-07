@@ -1,10 +1,22 @@
-import { StyleSheet, Text, TextInput, View } from 'react-native'
-import React from 'react'
-import { useRouter } from 'expo-router'
-import Boton from '../app_old/Componetes/Boton'
+import { StyleSheet, Text, TextInput, View, Alert } from 'react-native';
+import React, { useState } from 'react';
+import { useRouter } from 'expo-router';
+import Boton from '../app_old/Componetes/Boton';
 
 const index = () => {
     const ruta = useRouter();
+    const [usuario, setUsuario] = useState('');
+    const [contrasena, setContrasena] = useState('');
+    const [error, setError] = useState('');
+
+    const handleLogin = () => {
+        if (usuario === contrasena && usuario !== '') {
+            ruta.push('./(tabs)/');
+        } else {
+          setError('Usuario o contraseña incorrecta');
+        }
+    };
+
     return (
         <View style={styles.container}>
             <Text style={styles.titulo}>Bienvenido</Text>
@@ -16,6 +28,8 @@ const index = () => {
                     placeholder="Ingresa tu usuario" 
                     style={styles.cajas} 
                     placeholderTextColor="#BFA89E"
+                    value={usuario}
+                    onChangeText={setUsuario}
                 />
             </View>
 
@@ -26,19 +40,21 @@ const index = () => {
                     style={styles.cajas} 
                     secureTextEntry={true}
                     placeholderTextColor="#BFA89E"
+                    value={contrasena}
+                    onChangeText={setContrasena}
                 />
             </View>
-
-            <Boton onPress={() => ruta.replace('./(tabs)/')} titulo='Iniciar Sesión' />
+            {error ? <Text >{error}</Text> : null}
+            <Boton onPress={handleLogin} titulo='Iniciar Sesión' />
 
             <Text style={styles.registro}>
                 ¿No tienes cuenta? <Text style={styles.link}>Regístrate aquí</Text>
             </Text>
         </View>
-    )
-}
+    );
+};
 
-export default index
+export default index;
 
 const styles = StyleSheet.create({
     container: {

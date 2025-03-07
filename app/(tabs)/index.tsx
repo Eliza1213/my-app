@@ -4,7 +4,8 @@ import React from 'react'
 const home = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.titulo}>HOME</Text>
+      <Text style={styles.titulo}>BIENVENIDO</Text>
+      <Text style={styles.titulo}>Elizabeth Flores</Text>
     </View>
   )
 }
